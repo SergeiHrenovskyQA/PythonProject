@@ -1,0 +1,6 @@
+{
+  "url": "https://euronews.com/",
+  "default_time_out": 30,
+  "middle_time_out": 10,
+  "low_time_out": 3
+}
