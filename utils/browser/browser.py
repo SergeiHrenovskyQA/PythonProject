@@ -17,5 +17,6 @@ class Browser:
     @staticmethod
     def _start_new_instance() -> WebDriver:
         options = Options()
+        options.add_argument("--start-maximized")
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         return webdriver.Chrome(options=options)
