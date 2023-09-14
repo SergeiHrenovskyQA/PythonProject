@@ -5,18 +5,10 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 
 class Browser:
 
-    _web_driver = None
-
-    @classmethod
-    @property
-    def get_driver(cls) -> WebDriver:
-        if cls._web_driver is None:
-            cls._web_driver = cls._start_new_instance()
-        return cls._web_driver
-
-    @staticmethod
-    def _start_new_instance() -> WebDriver:
-        options = Options()
-        options.add_argument("--start-maximized")
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        return webdriver.Chrome(options=options)
+    def __new__(cls) -> WebDriver:
+        if not hasattr(cls, 'web_driver'):
+            options = Options()
+            options.add_argument("--start-maximized")
+            options.add_experimental_option("excludeSwitches", ["enable-logging"])
+            cls.web_driver = webdriver.Chrome(options=options)
+        return cls.web_driver

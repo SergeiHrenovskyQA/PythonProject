@@ -2,7 +2,7 @@ from pytest import fixture
 from utils.browser.browser import Browser
 
 
-@fixture()
+@fixture(scope="session")
 def browser():
-    yield Browser().get_driver
-    Browser().get_driver.quit()
+    yield Browser()
+    Browser().quit()

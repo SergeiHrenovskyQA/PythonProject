@@ -22,4 +22,4 @@ class Waiter:
 
     def get_web_driver_waiter(self, timeout: int = None) -> WebDriverWait:
         timeout = self.DEFAULT_TIME_OUT if timeout is None else timeout
-        return WebDriverWait(Browser.get_driver, timeout)
+        return WebDriverWait(Browser(), timeout)

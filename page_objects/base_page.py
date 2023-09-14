@@ -7,6 +7,11 @@ class BasePage:
         self.xpath = xpath
         self.name = name
 
-    def is_opened(self) -> bool:
-        page = Label(self.xpath, self.name)
-        return page.is_displayed()
+    def is_opened(self, timeout: int = None) -> bool:
+        return self._get_base_web_element().is_displayed(timeout)
+
+    def get_base_xpath(self) -> str:
+        return self.xpath
+
+    def _get_base_web_element(self) -> Label:
+        return Label(self.xpath, self.name)
